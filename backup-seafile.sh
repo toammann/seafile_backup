@@ -137,7 +137,7 @@ start_user_service(){
   #===== Transfer backup of seafile and seahub =====================================
 
   #Transfer database dumps
-  echo "Transfer MySQL dumps"
+  echo "Transfer MySQL dumps. Enter password for the MYSQL root user"
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$DIR_DB $DIR_OUTPUT
 
   #Transfer seafile config
@@ -175,6 +175,11 @@ start_user_service(){
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$FAIL2BAN_FILURL $DIR_OUTPUT
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$FAIL2BAN_FILWEBDAV $DIR_OUTPUT
 
+  #===== Run garbage collection ==================================================
+
+  echo "Run seafile garbadge collector"
+  ssh_cmd "$DIR_SEAFLATEST/seaf-gc.sh"
+
   #===== Transfer seafile data =====================================================
 
   echo "Transfer seafile data folder"
@@ -183,6 +188,7 @@ start_user_service(){
   #Verify rsync
   #If the second rsync reports "Number of files transferred: 0" you will know that the files are identical on each side,
   #based on their checksums. 
+  echo "Starting verify of data..."
   VERIFY_OUTPUT=$(rsync -aRv --stats --checksum --dry-run -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$DIR_SEAFDATA $DIR_OUTPUT)
   VERIFY_CHK=$(echo "$VERIFY_OUTPUT" | grep -o 'Number of regular files transferred: 0' || true;)
 
