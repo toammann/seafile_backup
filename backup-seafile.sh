@@ -175,6 +175,7 @@ start_user_service(){
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$FAIL2BAN_FILAUTH $DIR_OUTPUT
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$FAIL2BAN_FILURL $DIR_OUTPUT
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$FAIL2BAN_FILWEBDAV $DIR_OUTPUT
+  rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$FAIL2BAN_FILWEBDAVNGINX $DIR_OUTPUT
 
   #===== Run garbage collection ==================================================
 
