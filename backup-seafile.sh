@@ -157,6 +157,7 @@ start_user_service(){
 
   echo "Transfer systemd unit files"
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$SYSTEMD_ONLYOFFICE $DIR_OUTPUT
+  rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$SYSTEMD_ELASTICSEARCH $DIR_OUTPUT
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$SYSTEMD_MNT $DIR_OUTPUT
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$SYSTEMD_USER_SEAFILE $DIR_OUTPUT
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$SYSTEMD_USER_SEAHUB $DIR_OUTPUT
