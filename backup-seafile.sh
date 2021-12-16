@@ -20,7 +20,7 @@ ssh_cmd(){
 mysql_dump(){
 
   #Create credentials file on host
-  echo "Create MySQL dumps"
+  echo "Create MySQL dumps. Enter password for the mysql root user"
 
   ssh -t -o ControlPath=$SSH_CONTROL_PATH $SSH_HOST "mysql_config_editor set --login-path=backups --host=$MYSQL_HOST --user=$MYSQL_USER --password"
 
@@ -137,7 +137,7 @@ start_user_service(){
   #===== Transfer backup of seafile and seahub =====================================
 
   #Transfer database dumps
-  echo "Transfer MySQL dumps. Enter password for the MYSQL root user"
+  echo "Transfer MySQL dumps"
   rsync $RSYNC_OPT -e "ssh -o ControlPath=$SSH_CONTROL_PATH" $SSH_HOST:$DIR_DB $DIR_OUTPUT
 
   #Transfer seafile config
