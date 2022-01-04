@@ -1,3 +1,0 @@
-
-debug ausgabe nach rsync data bevor der veryfiy beginnt
-dass man weiß wann er in verify geht
