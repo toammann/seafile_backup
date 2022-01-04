@@ -5,14 +5,27 @@ Run the backup with "/mnt/ext_backup/seaf_backup" as output folder
  ./backup-seafile.sh /mnt/ext_backup/seaf_backup        
 ```
 
-The script will ask you for your private key to make ssh connections to the remote server. It will stop the seafile and seahub.
+The script will ask you for your ssh private key to make ssh connections to the remote server. It will also request the password for the MySQL root user to create database dumps. 
 
-The next step is to backup the mysql databases. Enter the password of the myql root user to enable the script to create database dumps.
+> Stepps performed:
+>  1) Stop Seafile
+>  2) Stop Seahub
+>  3) Create and transfer database dumps
+>  4) Transfer seafile config
+>  5) Transfer avatar folder
+>  6) Transfer self written systemd unit files
+>  7) Transfer nginx config
+>  8) Transfer fail2ban config
+>  9) Run seafile garbage collection 
+> 10) Transfer seafile data
+> 11) Verify seafile data
+> 12) Start seafile and seahub
 
+\
 The output should look like this:
 
 ```
-~/git/seafile_backup    main !2 ?1  ./backup-seafile.sh /mnt/ext_backup/seaf_backup
+./backup-seafile.sh /mnt/ext_backup/seaf_backup
 
 Check seahub service status
 seahub systemd service is active. Stopping the service...
@@ -27,7 +40,9 @@ Shared connection to seafile.ammanncloud.de closed.
     MySQL dump seafile-db.sql
     MySQL seahub ccnet-db.sql
 
-...
+.
+.
+.
 
 2-15 22:02:39 gc-core.c(392): GC deleted repo 4cb7c7b1.
 2021-12-15 22:02:39 gc-core.c(392): GC deleted repo 132302e1.
