@@ -7,7 +7,7 @@ Run the backup with "/mnt/ext_backup/seaf_backup" as output folder
 
 The script will ask you for your ssh private key to make ssh connections to the remote server. It will also request the password for the MySQL root user to create database dumps. 
 
-> Stepps performed:
+Stepps performed:
 >  1) Stop Seafile
 >  2) Stop Seahub
 >  3) Create and transfer database dumps
