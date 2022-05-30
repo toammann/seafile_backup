@@ -13,7 +13,7 @@ Stepps performed:
 >  3) Create and transfer mysql database dumps
 >  4) Transfer seafile config
 >  5) Transfer avatar folder
->  6) Transfer self written systemd unit files
+>  6) Transfer relevant systemd unit files
 >  7) Transfer nginx config
 >  8) Transfer fail2ban config
 >  9) Run seafile garbage collection 
