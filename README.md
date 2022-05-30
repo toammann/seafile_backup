@@ -10,7 +10,7 @@ The script will ask you for your ssh private key to make ssh connections to the 
 Stepps performed:
 >  1) Stop Seafile
 >  2) Stop Seahub
->  3) Create and transfer database dumps
+>  3) Create and transfer mysql database dumps
 >  4) Transfer seafile config
 >  5) Transfer avatar folder
 >  6) Transfer self written systemd unit files
